@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
