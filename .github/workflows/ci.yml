@@ -22,7 +22,7 @@ jobs:
       - name: Ruff lint
         run: ruff check .
 
-  test:
+  unit:
     runs-on: ubuntu-latest
     needs: lint
     steps:
@@ -34,14 +34,29 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest pytest-cov
-      - name: Run tests
-        run: python -m pytest --cov=app --cov=navigation -v
+          pip install -r requirements.txt pytest
+      - name: Unit tests
+        run: python -m pytest tests/ -v
 
-  docker:
+  coverage:
     runs-on: ubuntu-latest
-    needs: test
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pytest-cov
+      - name: Coverage
+        run: python -m pytest --cov=app --cov=navigation --cov-report=term --cov-fail-under=70
+
+  build:
+    runs-on: ubuntu-latest
+    needs: coverage
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
       - uses: actions/checkout@v4
