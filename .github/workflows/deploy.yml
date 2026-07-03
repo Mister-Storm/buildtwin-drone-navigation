@@ -69,7 +69,6 @@ jobs:
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
             # Pull the compose file if it changed
-            git pull origin main
 
             # Pull latest image and restart only drone-navigation (no build)
             docker compose -f docker-compose.prod.yml pull drone-navigation
