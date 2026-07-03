@@ -66,7 +66,7 @@ jobs:
             cd /home/fernandoleiteadvogado/buildtwin
 
             # Log in to GHCR on the VM
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u Mister-Storm --password-stdin
 
             # Pull the compose file if it changed
 
