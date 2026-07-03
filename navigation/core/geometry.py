@@ -4,12 +4,9 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import List, Tuple
 
-import numpy as np
 from shapely import affinity
-from shapely.geometry import Point, Polygon, box, mapping
-from shapely.ops import clip_by_rect, orient, unary_union
+from shapely.geometry import Polygon
 
 # Earth radius in meters
 EARTH_RADIUS_M = 6_371_000

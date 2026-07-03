@@ -4,10 +4,7 @@ from __future__ import annotations
 
 from typing import List, Tuple
 
-import numpy as np
-from shapely import affinity
-from shapely.geometry import LineString, Point, Polygon, box
-from shapely.ops import clip_by_rect
+from shapely.geometry import LineString, Polygon
 
 
 def generate_coverage_path(
@@ -35,7 +32,6 @@ def generate_coverage_path(
             return []
 
     min_x, min_y, max_x, max_y = polygon.bounds
-    width = max_x - min_x
 
     # Generate horizontal scan lines from bottom to top
     waypoints: list[tuple[float, float]] = []

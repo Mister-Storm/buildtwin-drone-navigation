@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import math
-from typing import List, Tuple
 
 from navigation.core.boustrophedon import generate_coverage_path, optimize_path_order
 from navigation.core.camera import DEFAULT_CAMERA, CameraModel
@@ -12,7 +10,6 @@ from navigation.core.geometry import (
     Waypoint,
     haversine_distance_m,
     polygon_area_m2,
-    polygon_centroid,
     project_polygon,
     unproject_waypoint,
 )
@@ -58,7 +55,6 @@ class MissionPlanner:
 
         # Calculate area
         area_m2 = polygon_area_m2(boundary_points)
-        centroid = polygon_centroid(boundary_points)
 
         # Determine altitude
         if altitude_m is None or altitude_m <= 0:
@@ -89,7 +85,6 @@ class MissionPlanner:
         for i, (x, y) in enumerate(path_local):
             gp = unproject_waypoint(x, y, origin, rotation)
             heading = 0.0
-            trigger = False
 
             if previous is not None:
                 # Calculate heading from previous point
