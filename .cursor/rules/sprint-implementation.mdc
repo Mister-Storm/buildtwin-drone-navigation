@@ -1,0 +1,25 @@
+---
+description: Sprint implementation standards — TDD, English-only, sut, should-when, no comments, geometry in navigation/core
+alwaysApply: true
+---
+
+# sprint-implementation (drone-navigation)
+
+MUST:
+- TDD: failing pytest in `tests/` before implementation
+- test subject named `sut`
+- test name: `test_should_{outcome}_when_{condition}`
+- English-only: branches, commits, identifiers, test names
+- geometry/algorithms in `navigation/core/`; thin FastAPI routes in `app/api/routes/`
+- branch: `{type}/{english-kebab-slug}` from `main`
+
+NEVER:
+- code comments in production or test code
+- non-English branch/commit/identifier names
+- edit existing test before classifying failure
+
+TEST_BROKEN:
+- IF existing test fails → fix implementation first
+- ONLY update test if requirement changed, test was wrong, or internal refactor without contract change
+
+REF: ../BuildTwin/docs/SPRINT-WORKFLOW.md

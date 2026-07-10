@@ -1,0 +1,20 @@
+---
+description: Definition of done for drone-navigation tasks — ruff and pytest required before marking complete
+alwaysApply: true
+---
+
+# BuildTwin Drone Navigation — Definition of Done
+
+See also: `.cursor/rules/sprint-implementation.mdc` | `../BuildTwin/docs/SPRINT-WORKFLOW.md`
+
+Do **not** mark a task complete until all applicable checks pass:
+
+## Drone Navigation
+
+- `ruff check .` — lint zero errors
+- `python -m pytest tests/ -v` — all tests green
+- CI coverage gate: 70% on `app` + `navigation`
+
+## Honest status
+
+Report: code done / tests pass / lint pass — separately.
