@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/sprint-push-guard.sh",
+        "matcher": "git push|gh pr create"
+      }
+    ]
+  }
+}

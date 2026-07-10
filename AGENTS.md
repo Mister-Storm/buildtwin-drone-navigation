@@ -58,3 +58,24 @@ Response: waypoints, area, estimated time, photo count, GSD.
 - Runs as Docker container in the `buildtwin-net` network
 - Consumed by the Kotlin backend via `http://drone-navigation:8091`
 - No public UI — API-only service
+
+## Quality gates
+
+Before any PR merge:
+1. `ruff check .` — lint
+2. `python -m pytest tests/ -v` — all tests green
+3. CI coverage: 70% on `app` + `navigation`
+
+## Sprint workflow
+
+Skill: `~/.cursor/skills/buildtwin-sprint/SKILL.md`
+Canonical doc: `../BuildTwin/docs/SPRINT-WORKFLOW.md`
+Cursor rules: `.cursor/rules/sprint-implementation.mdc`, `.cursor/rules/definition-of-done.mdc`
+
+Conventions (all sprints):
+- English-only branches, commits, PRs, identifiers, test names
+- No code comments — self-documenting names
+- TDD: failing pytest → production code → refactor
+- Test subject always named `sut`; test name `test_should_{outcome}_when_{condition}`
+- Branch pattern: `{type}/{english-kebab-slug}` from `main`
+- Geometry/algorithms in `navigation/core/`; thin routes in `app/api/routes/`
