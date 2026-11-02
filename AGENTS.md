@@ -2,17 +2,39 @@
 
 FastAPI service for autonomous drone flight path planning and mission management.
 
+## Cross-agent requirements
+
+Every coding agent MUST read and follow the [canonical BuildTwin constitution](../buildtwin/.specify/memory/constitution.md)
+before work. Keep that file canonical; report conflicting guidance rather than inventing exceptions.
+Paths and commands below resolve from this repository root.
+
+- Before production edits, record affected journeys, contracts, permissions, data, workers, and
+  consumers; distinguish approved behavior, known defects, and unverified behavior.
+- Preserve approved legitimate behavior outside scope. Security defects and misleading analytical
+  results are not compatibility guarantees. Cite accepted requirements and affected consumers for
+  intentional behavior changes; obtain explicit approval for material changes outside scope.
+- Reproduce defects with meaningful failing tests where practical; record any reproduction limit.
+  Verify positive permitted-success and negative forbidden-action cases. Do not weaken tests to pass.
+- Run mandatory repository gates plus impact-appropriate regression, contract, and complete-journey
+  acceptance checks, including real browser interactions where required by the constitution.
+- Link requirements, implementation, tests, and evidence. Report actual commands, versions, config,
+  results, pre-existing failures, and blocked checks. A required blocked check prevents a completion
+  claim; builds, health checks, mocks, and HTTP 200 alone do not prove end-to-end correctness.
+- Preserve existing data, legitimate ownership, and unrelated working-tree changes. Never reset DBs,
+  delete volumes, broaden memberships, disable security, forge tokens, or rewrite job states to pass
+  validation. Correct applied migrations through auditable forward migrations.
+- Concise status styles must not reduce technical precision, evidence, or disclosure of limitations.
+
 ## Repositories
 
 | Repo | Path | Role |
 |------|------|------|
-| **Drone Navigation** (this repo) | `/home/mister-storm/development/buildtwin-drone-navigation` | FastAPI, path planning |
-| **Backend API** | `/home/mister-storm/development/BuildTwin` | Kotlin monolith, consumes this service |
+| **Drone Navigation** (this repo) | `.` | FastAPI, path planning |
+| **Backend API** | `../buildtwin` | Kotlin monolith, consumes this service |
 
 ## Quick start
 
 ```bash
-cd /home/mister-storm/development/buildtwin-drone-navigation
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8091
@@ -69,7 +91,7 @@ Before any PR merge:
 ## Sprint workflow
 
 Skill: `~/.cursor/skills/buildtwin-sprint/SKILL.md`
-Canonical doc: `../BuildTwin/docs/SPRINT-WORKFLOW.md`
+Canonical doc: `../buildtwin/docs/SPRINT-WORKFLOW.md`
 Cursor rules: `.cursor/rules/sprint-implementation.mdc`, `.cursor/rules/definition-of-done.mdc`
 
 Conventions (all sprints):

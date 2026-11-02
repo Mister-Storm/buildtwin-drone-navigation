@@ -5,7 +5,11 @@ alwaysApply: true
 
 # BuildTwin Drone Navigation — Definition of Done
 
-See also: `.cursor/rules/sprint-implementation.mdc` | `../BuildTwin/docs/SPRINT-WORKFLOW.md`
+Paths below resolve from the repository root. Read `AGENTS.md` and the canonical
+constitution at `../buildtwin/.specify/memory/constitution.md` before work. Follow its compatibility,
+test-first, data-preservation, and evidence rules; report conflicts and preserve unrelated changes.
+
+See also: `.cursor/rules/sprint-implementation.mdc` | `../buildtwin/docs/SPRINT-WORKFLOW.md`
 
 Do **not** mark a task complete until all applicable checks pass:
 
@@ -18,3 +22,8 @@ Do **not** mark a task complete until all applicable checks pass:
 ## Honest status
 
 Report: code done / tests pass / lint pass — separately.
+
+Required failed or blocked checks prevent a completion claim. Record actual commands, versions,
+configuration, results, evidence, and limitations; builds, health, mocks, and HTTP 200 alone are
+not journey acceptance. Apply the canonical workflow
+(`../buildtwin/docs/SPRINT-WORKFLOW.md`) for affected journeys and CI gaps.

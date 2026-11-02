@@ -5,6 +5,10 @@ alwaysApply: true
 
 # sprint-implementation (drone-navigation)
 
+Paths below resolve from the repository root. Read `AGENTS.md` and the canonical
+constitution at `../buildtwin/.specify/memory/constitution.md` before work. Follow its compatibility,
+test-first, data-preservation, and evidence rules; report conflicts and preserve unrelated changes.
+
 MUST:
 - TDD: failing pytest in `tests/` before implementation
 - test subject named `sut`
@@ -19,7 +23,10 @@ NEVER:
 - edit existing test before classifying failure
 
 TEST_BROKEN:
-- IF existing test fails → fix implementation first
-- ONLY update test if requirement changed, test was wrong, or internal refactor without contract change
+- Classify failures before editing tests; distinguish regressions, pre-existing defects, and blockers
+- Fix implementation when it violates accepted requirements; never delete, skip, or weaken tests to pass
+- Explain expectation changes with accepted requirements or evidence of a test error; internal
+  refactors must preserve observable contract expectations
+- Reproduce defects; verify permitted-success and forbidden-action cases plus affected contracts
 
-REF: ../BuildTwin/docs/SPRINT-WORKFLOW.md
+REF: ../buildtwin/docs/SPRINT-WORKFLOW.md
